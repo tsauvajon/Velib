@@ -1,0 +1,49 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="carto">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="markers">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="marker" maxOccurs="unbounded" minOccurs="0">
+                <xsd:complexType>
+                  <xsd:simpleContent>
+                    <xsd:extension base="xsd:string">
+                      <xsd:attribute type="xsd:string" name="name" use="optional"/>
+                      <xsd:attribute type="xsd:int" name="number" use="optional"/>
+                      <xsd:attribute type="xsd:string" name="address" use="optional"/>
+                      <xsd:attribute type="xsd:string" name="fullAddress" use="optional"/>
+                      <xsd:attribute type="xsd:float" name="lat" use="optional"/>
+                      <xsd:attribute type="xsd:float" name="lng" use="optional"/>
+                      <xsd:attribute type="xsd:byte" name="open" use="optional"/>
+                      <xsd:attribute type="xsd:byte" name="bonus" use="optional"/>
+                    </xsd:extension>
+                  </xsd:simpleContent>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="arrondissements">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="arrondissement" maxOccurs="unbounded" minOccurs="0">
+                <xsd:complexType>
+                  <xsd:simpleContent>
+                    <xsd:extension base="xsd:string">
+                      <xsd:attribute type="xsd:byte" name="number" use="optional"/>
+                      <xsd:attribute type="xsd:float" name="minLat" use="optional"/>
+                      <xsd:attribute type="xsd:float" name="minLng" use="optional"/>
+                      <xsd:attribute type="xsd:float" name="maxLat" use="optional"/>
+                      <xsd:attribute type="xsd:float" name="maxLng" use="optional"/>
+                    </xsd:extension>
+                  </xsd:simpleContent>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

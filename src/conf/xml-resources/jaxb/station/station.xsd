@@ -1,0 +1,15 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="station">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element type="xsd:byte" name="available"/>
+        <xsd:element type="xsd:byte" name="free"/>
+        <xsd:element type="xsd:byte" name="total"/>
+        <xsd:element type="xsd:byte" name="ticket"/>
+        <xsd:element type="xsd:byte" name="open"/>
+        <xsd:element type="xsd:int" name="updated"/>
+        <xsd:element type="xsd:byte" name="connected"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

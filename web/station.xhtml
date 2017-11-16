@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <style type="text/css">            
+            #iframeid{
+                border:0;
+            }
+            
+            #map {
+                width: 100%;
+                height: 700px;
+            }
+            
+            th, td {
+                padding: 5px !important;
+            }
+            
+            .dtcontainer{
+                background: rgba(0, 0, 0, .2) !important;
+                padding: 20px !important;
+            }
+            
+            a {
+                color: #fff !important;
+                text-decoration: underline;
+            }
+            
+            body {
+                background: fixed linear-gradient(141deg, #ffc148 -150%, #d35757 75%);
+                color: #fff !important;
+            }
+        </style>
+        <title>Station</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css"></link>
+        <script type="text/javascript">
+            function initMap() {
+                var uluru = {lat: #{vlibApplication.mySelectedMarker.lat}, lng: #{vlibApplication.mySelectedMarker.lng}};
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 17,
+                    center: uluru
+                });
+                var marker = new google.maps.Marker({
+                    position: uluru,
+                    map: map
+                });
+            }
+    </script>
+        <script async="true" defer="true" src="#{vlibApplication.link}"></script>
+    </head>
+    <h:body class="container">
+        <f:view class="raw col-md-12">
+            <h1>#{vlibApplication.mySelectedMarker.fullAddress}</h1>
+            <a href="http://localhost:8080/TPVLIB/">Retour</a>
+        </f:view>
+        <div id="map" style="margin-top: 10px;"></div>
+            <h:form id="markerform">
+                <div class="dtcontainer">
+                <h:dataTable value="#{vlibApplication.mySelectedStation}" 
+                             var="station"
+                             class="" 
+                             id="stationdetails">
+                    <h:column>
+                        <f:facet name="header">Vélibs dispo</f:facet>
+                        <h:outputText value="#{station.available}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Vélibs libres</f:facet>
+                        <h:outputText value="#{station.free}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Total</f:facet>
+                        <h:outputText value="#{station.total}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Ticket</f:facet>
+                        <h:outputText value="#{station.ticket}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Ouverte</f:facet>
+                        <h:outputText value="#{station.open}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Mise à jour</f:facet>
+                        <h:outputText value="#{station.updated}">
+                            <f:convertDateTime pattern="HH'h'mm' et 'ss's'" />
+                        </h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Connectée</f:facet>
+                        <h:outputText value="#{station.connected}" />
+                    </h:column>
+                </h:dataTable>
+                </div>
+            </h:form>
+    </h:body>
+</html>

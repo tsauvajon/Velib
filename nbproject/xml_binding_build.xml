@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+            *** GENERATED FROM xml_binding_cfg.xml - DO NOT EDIT  ***
+            *** Configure thru JAXB Wizard.                       ***
+        --><project name="VLib_jaxb" default="default" basedir=".">
+    <target name="xjc-typedef-target" depends="-init-project">
+        <typedef classname="com.sun.tools.xjc.XJCTask" name="xjc" xmlns:s="http://xml.netbeans.org/schema/JAXBWizConfig">
+            <classpath path="${jaxbwiz.xjcdef.classpath}"/>
+        </typedef>
+    </target>
+    <target name="jaxb-clean-code-generation" depends="clean,jaxb-code-generation"/>
+    <target name="jaxb-code-generation" depends="xjc-typedef-target,-do-init,-init-macrodef-javac">
+        <mkdir dir="${build.generated.sources.dir}/jaxb" xmlns:s="http://xml.netbeans.org/schema/JAXBWizConfig"/>
+        <mkdir dir="build/generated/jaxbCache" xmlns:s="http://xml.netbeans.org/schema/JAXBWizConfig"/>
+        <mkdir dir="build/generated/jaxbCache/carto"/>
+        <xjc package="carto" destdir="build/generated/jaxbCache/carto" catalog="catalog.xml">
+            <classpath>
+                <pathelement location="${src.dir}"/>
+                <pathelement path="${jaxbwiz.xjcrun.classpath}"/>
+            </classpath>
+            <arg value="-xmlschema"/>
+            <schema file="src/conf/xml-resources/jaxb/carto/carto.xsd"/>
+            <depends file="src/conf/xml-resources/jaxb/carto/carto.xsd"/>
+            <produces dir="build/generated/jaxbCache/carto"/>
+        </xjc>
+        <copy todir="${build.generated.sources.dir}/jaxb">
+            <fileset dir="build/generated/jaxbCache/carto"/>
+        </copy>
+        <mkdir dir="build/generated/jaxbCache/station"/>
+        <xjc package="station" destdir="build/generated/jaxbCache/station" catalog="catalog.xml">
+            <classpath>
+                <pathelement location="${src.dir}"/>
+                <pathelement path="${jaxbwiz.xjcrun.classpath}"/>
+            </classpath>
+            <arg value="-xmlschema"/>
+            <schema file="src/conf/xml-resources/jaxb/station/station.xsd"/>
+            <depends file="src/conf/xml-resources/jaxb/station/station.xsd"/>
+            <produces dir="build/generated/jaxbCache/station"/>
+        </xjc>
+        <copy todir="${build.generated.sources.dir}/jaxb">
+            <fileset dir="build/generated/jaxbCache/station"/>
+        </copy>
+        <!--*** Web project javac macro does not support sourcepath attribute, so do not pass "sourcepath=${src.dir}"-->
+    </target>
+</project>

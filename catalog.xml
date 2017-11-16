@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/Users/Guillaume/LAB/VLib/../../Documents/WebServices/vlib/carto.xsd" uri="src/conf/xml-resources/jaxb/carto/carto.xsd"/>
+    <system systemId="file:/Users/Guillaume/LAB/VLib/../../Documents/WebServices/vlib/station.xsd" uri="src/conf/xml-resources/jaxb/station/station.xsd"/>
+</catalog>
